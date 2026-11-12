@@ -50,3 +50,24 @@ class Scuola:
 
     def __len__(self) -> int:
         return self.conta_studenti()
+
+if __name__ == "__main__":
+    scuola = Scuola("Istituto Tecnico Tecnologico Ferretti")
+
+    scuola.aggiungi_studente(Studente("Luca", "Bazzocchi", 17, "Cesena"))
+    scuola.aggiungi_studente(Studente("Lorenzo", "Ostolani", 16, "Cesena"))
+    scuola.aggiungi_studente(Studente("Gabriele", "Tumaini", 18, "Forlì"))
+
+    print(f"Numero studenti: {scuola.conta_studenti()}")
+
+    for studente in scuola.cerca_per_cognome("bazzocchi"):
+        print(studente)
+        print(f"Classificazione: {studente.classificazione()}")
+
+    print("Studenti di 18 anni:")
+    for studente in scuola.cerca_per_eta(18):
+        print(f"- {studente.nome} {studente.cognome}")
+
+    quinta = Classe("5A", 2025)
+    quinta.aggiungi_studente(scuola.studenti[1])
+    print(f"Classe {quinta.sezione}: {len(quinta.elenco())} studenti")
