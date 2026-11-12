@@ -29,3 +29,24 @@ class Classe:
 
     def elenco(self) -> List[Studente]:
         return self.studenti
+
+class Scuola:
+    def __init__(self, nome: str) -> None:
+        self.nome = nome
+        self.studenti = []
+
+    def aggiungi_studente(self, studente: Studente) -> None:
+        self.studenti.append(studente)
+
+    def cerca_per_cognome(self, cognome: str) -> List[Studente]:
+        cognome = cognome.lower()
+        return [studente for studente in self.studenti if studente.cognome.lower() == cognome]
+
+    def cerca_per_eta(self, eta: int) -> List[Studente]:
+        return [studente for studente in self.studenti if studente.eta == eta]
+
+    def conta_studenti(self) -> int:
+        return len(self.studenti)
+
+    def __len__(self) -> int:
+        return self.conta_studenti()
